@@ -19,16 +19,16 @@
 ### The Project
 #### Data Check and Manipulation
 ```
-SELECT   *   FROM   dbo.Appointments;
+   SELECT   *   FROM   dbo.Appointments;
 ```
 ```
-SELECT   *   FROM   dbo.Doctors;
+   SELECT   *   FROM   dbo.Doctors;
 ```
 ```
-SELECT   *   FROM   dbo.Medications;
+   SELECT   *   FROM   dbo.Medications;
 ```
 ```
-SELECT   *   FROM   dbo.Patients;
+  SELECT   *   FROM   dbo.Patients;
 ```
 
 ```
