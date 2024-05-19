@@ -1,6 +1,6 @@
 # HealthCare-Database-Analysis-with-Microsoft-SQL-server
 #### This project is about analysing a dataset about patients, medical conditions,  appointments, the  prescriptions and the respective doctors who attended to the appointments.
-#### The analysis covers simple, intermediate and advanced SQL skills.
+#### The analysis covers simple, intermediate and advanced SQL skills for example JOINS and  DATE FUNCTIONS .
 #### The database was provided by Dr Eyo and this is the link to his X page where he talks about the free copy https://x.com/Eyowhite3/status/1726883774640562366
 
 #### I have come up with this questions for the analysis:
@@ -44,7 +44,7 @@ ALTER     COLUMN  ExpiryDate  Date; -- Changing datatype
 ```
 SELECT        a.AppointmentID,
               a.AppointmentDateTime,
-			  a.PatientID,
+              a.PatientID,
               CONCAT(p.FirstName,' ',p.LastName) AS PatientName
 FROM          dbo.Appointments AS a
 LEFT JOIN     dbo.Patients     AS p
@@ -61,7 +61,7 @@ FROM          dbo.Appointments;
 ```
 SELECT        DoctorID,
               CONCAT(FirstName,' ',LastName) AS DocName,
-			  Specialisation
+              Specialisation
 FROM          dbo.Doctors;
 ```
 
@@ -69,7 +69,7 @@ FROM          dbo.Doctors;
 ```
 SELECT        CONCAT(FirstName,' ',LastName) AS PatientName,
               Gender,
-			  DateofBirth
+              DateofBirth
 FROM          dbo.Patients
 WHERE         Gender = 'Male'
 AND           DateofBirth < '1980'
