@@ -24,24 +24,24 @@ SELECT   *   FROM   dbo.Appointments;
 ```
 SELECT   *   FROM   dbo.Doctors;
 ```
+```
 SELECT   *   FROM   dbo.Medications;
-
+```
+```
 SELECT   *   FROM   dbo.Patients;
+```
 
-
-
+```
 ALTER     TABLE      dbo.Medications
 ALTER     COLUMN  PrescriptionDate  Date; --Changing datatype
-
+```
+```
 ALTER     TABLE      dbo.Medications
 ALTER     COLUMN  ExpiryDate  Date; -- Changing datatype
+```
 
---ANALYSIS
-
---BASIC SKILLS
-
--- Retrieve all appointments with their respective patient details (first name, last name).
-``
+##### Retrieve all appointments with their respective patient details (first name, last name).
+```
 SELECT        a.AppointmentID,
               a.AppointmentDateTime,
 			  a.PatientID,
@@ -49,21 +49,24 @@ SELECT        a.AppointmentID,
 FROM          dbo.Appointments AS a
 LEFT JOIN     dbo.Patients     AS p
 ON            a.PatientID = p.PatientID;
-``
---Find the total number of appointments made.
+```
 
+###### Find the total number of appointments made.
+```
 SELECT        COUNT(DISTINCT AppointmentID) AS NumberofAppointments
 FROM          dbo.Appointments;
-   
---List all doctors along with their specializations.
-
+ ```
+  
+##### List all doctors along with their specializations.
+```
 SELECT        DoctorID,
               CONCAT(FirstName,' ',LastName) AS DocName,
 			  Specialisation
 FROM          dbo.Doctors;
+```
 
---Retrieve patients who are male and were born before 1980.
-
+##### Retrieve patients who are male and were born before 1980.
+```
 SELECT        CONCAT(FirstName,' ',LastName) AS PatientName,
               Gender,
 			  DateofBirth
@@ -71,11 +74,9 @@ FROM          dbo.Patients
 WHERE         Gender = 'Male'
 AND           DateofBirth < '1980'
 ORDER  BY     DateofBirth ASC;
-
---INTERMEDIATE SKILLS
-
---Get the count of appointments for each doctor.
-
+```
+##### Get the count of appointments for each doctor.
+```
 SELECT        d.DoctorID,
               CONCAT(d.FirstName,' ',d.LastName) AS DocName,
 			  COUNT(a.AppointmentID) AS AppointmentCount
@@ -84,10 +85,11 @@ LEFT  JOIN    dbo.Appointments AS a
 ON            d.DoctorID = A.DoctorID
 GROUP BY      d.DoctorID,
               FirstName,
-			  LastName;
+              LastName;
+```
               
--- Find doctors who prescribed medications and their respective medication count.
-
+##### Find doctors who prescribed medications and their respective medication count.
+```
 SELECT        PrescribingDoctorID,
               CONCAT(FirstName,' ',LastName) AS DocName,
 			  COUNT(DISTINCT MedicationID) AS MediCount
@@ -96,12 +98,11 @@ LEFT JOIN     dbo.Medications AS m
 ON            d.DoctorID = m.PrescribingDoctorID
 GROUP BY      PrescribingDoctorID,
               FirstName,
-			  LastName
+              LastName
 ORDER BY      PrescribingDoctorID ASC;
-             
-
---List appointments scheduled for pediatricians.
-
+```             
+##### List appointments scheduled for pediatricians.
+```
 SELECT        a.AppointmentID,
               a.AppointmentDateTime,
 			  a.DoctorID,
@@ -111,12 +112,9 @@ FROM          dbo.Appointments AS a
 LEFT   JOIN   dbo.Doctors AS d
 ON            a.DoctorID = d.DoctorID
 WHERE         Specialisation LIKE 'pediatric%';
-
-
---ADVANCED    
-
---Identify patients who have appointments for child-related issues and the medications they are prescribed.
-
+```
+##### Identify patients who have appointments for child-related issues and the medications they are prescribed.
+```
 SELECT        p.PatientID,
               CONCAT(p.FirstName,' ',p.LastName) AS PatientName,
 			  a.Purpose,
@@ -127,10 +125,9 @@ ON            p.PatientID = a.PatientID
 LEFT JOIN     dbo.Medications AS m
 ON            a.PatientID = m.PatientID
 WHERE         Purpose LIKE '%child%';
-
-
---Find doctors who prescribed medications that are expiring within the next 30 days.
-
+```
+##### Find doctors who prescribed medications that are expiring within the next 30 days.
+```
 SELECT         d.DoctorID,
                CONCAT(d.FirstName,' ',d.LastName) AS DocName,
 			   m.MedicationName,
@@ -140,11 +137,9 @@ LEFT JOIN      Medications AS m
 ON             d.DoctorID = m.PrescribingDoctorID
 WHERE          ExpiryDate BETWEEN GETDATE() 
 AND            DATEADD(Day, 30, GETDATE());
-
-
-
--- Retrieve patients who haven't had any appointments.
-
+```
+##### Retrieve patients who haven't had any appointments.
+```
 SELECT        p.PatientID,
                CONCAT(p.FirstName,' ',p.LastName) AS PatientName,
 			  a.AppointmentID
@@ -152,5 +147,5 @@ FROM          Patients AS p
 LEFT  JOIN    Appointments AS a
 ON            a.PatientID = p.PatientID
 WHERE         AppointmentID IS NULL;
-
+```
 
