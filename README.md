@@ -50,6 +50,8 @@ FROM          dbo.Appointments AS a
 LEFT JOIN     dbo.Patients     AS p
 ON            a.PatientID = p.PatientID;
 ```
+#### Outcome
+![Hea 1](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/fa9cb545-2d41-49a9-982a-6e2c92cb8251)
 
 ###### Find the total number of appointments made.
 ```
