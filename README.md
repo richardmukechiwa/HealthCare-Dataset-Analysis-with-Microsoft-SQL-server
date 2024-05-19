@@ -16,7 +16,7 @@
 - Find doctors who prescribed medications that are expiring within the next 30 days.
 - Retrieve patients who haven't had any appointments.
 
-## The project
+### The project
 
 ```
 SELECT   *   FROM   dbo.Appointments;
@@ -79,7 +79,7 @@ ORDER  BY     DateofBirth ASC;
 ```
 SELECT        d.DoctorID,
               CONCAT(d.FirstName,' ',d.LastName) AS DocName,
-			  COUNT(a.AppointmentID) AS AppointmentCount
+                            COUNT(a.AppointmentID) AS AppointmentCount
 FROM          dbo.Doctors AS d
 LEFT  JOIN    dbo.Appointments AS a
 ON            d.DoctorID = A.DoctorID
@@ -105,8 +105,8 @@ ORDER BY      PrescribingDoctorID ASC;
 ```
 SELECT        a.AppointmentID,
               a.AppointmentDateTime,
-			  a.DoctorID,
-			  CONCAT(d.FirstName,' ',d.LastName) AS DocName,
+              a.DoctorID,
+              CONCAT(d.FirstName,' ',d.LastName) AS DocName,
               Specialisation
 FROM          dbo.Appointments AS a
 LEFT   JOIN   dbo.Doctors AS d
@@ -117,8 +117,8 @@ WHERE         Specialisation LIKE 'pediatric%';
 ```
 SELECT        p.PatientID,
               CONCAT(p.FirstName,' ',p.LastName) AS PatientName,
-			  a.Purpose,
-			  m.MedicationName
+              a.Purpose,
+              m.MedicationName
 FROM          dbo.Patients AS p
 LEFT JOIN     dbo.Appointments  AS a
 ON            p.PatientID = a.PatientID
@@ -130,8 +130,8 @@ WHERE         Purpose LIKE '%child%';
 ```
 SELECT         d.DoctorID,
                CONCAT(d.FirstName,' ',d.LastName) AS DocName,
-			   m.MedicationName,
-			   m.ExpiryDate
+               m.MedicationName,
+               m.ExpiryDate
 FROM           Doctors AS d
 LEFT JOIN      Medications AS m
 ON             d.DoctorID = m.PrescribingDoctorID
@@ -140,12 +140,12 @@ AND            DATEADD(Day, 30, GETDATE());
 ```
 ##### Retrieve patients who haven't had any appointments.
 ```
-SELECT        p.PatientID,
+SELECT         p.PatientID,
                CONCAT(p.FirstName,' ',p.LastName) AS PatientName,
-			  a.AppointmentID
-FROM          Patients AS p
-LEFT  JOIN    Appointments AS a
-ON            a.PatientID = p.PatientID
-WHERE         AppointmentID IS NULL;
+               a.AppointmentID
+FROM           Patients AS p
+LEFT  JOIN     Appointments AS a
+ON             a.PatientID = p.PatientID
+WHERE          AppointmentID IS NULL;
 ```
 
