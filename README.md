@@ -17,12 +17,13 @@
 - Retrieve patients who haven't had any appointments.
 
 ## The project
---DATA CHECK 
-``
-SELECT   *   FROM   dbo.Appointments;
-``
-SELECT   *   FROM   dbo.Doctors;
 
+```
+SELECT   *   FROM   dbo.Appointments;
+```
+```
+SELECT   *   FROM   dbo.Doctors;
+```
 SELECT   *   FROM   dbo.Medications;
 
 SELECT   *   FROM   dbo.Patients;
@@ -40,7 +41,7 @@ ALTER     COLUMN  ExpiryDate  Date; -- Changing datatype
 --BASIC SKILLS
 
 -- Retrieve all appointments with their respective patient details (first name, last name).
-
+``
 SELECT        a.AppointmentID,
               a.AppointmentDateTime,
 			  a.PatientID,
@@ -48,7 +49,7 @@ SELECT        a.AppointmentID,
 FROM          dbo.Appointments AS a
 LEFT JOIN     dbo.Patients     AS p
 ON            a.PatientID = p.PatientID;
-
+``
 --Find the total number of appointments made.
 
 SELECT        COUNT(DISTINCT AppointmentID) AS NumberofAppointments
