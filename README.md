@@ -1,4 +1,5 @@
 # HealthCare-Database-Analysis-with-Microsoft-SQL-server
+![HealthCare](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/219b2cbc-8916-4d55-b623-59bdb77b5bae)
 #### This project is about analysing a dataset about patients, medical conditions,  appointments, the  prescriptions and the respective doctors who attended to the appointments.
 #### The analysis covers simple, intermediate and advanced SQL skills for example JOINS and  DATE FUNCTIONS .
 #### The database was provided by Dr Eyo and this is the link to his X page where he talks about the free copy https://x.com/Eyowhite3/status/1726883774640562366
