@@ -38,7 +38,7 @@ ALTER     COLUMN  PrescriptionDate  Date; --Changing datatype
 ```sql
 ALTER     TABLE      dbo.Medications
 ALTER     COLUMN  ExpiryDate  Date; -- Changing datatype
-```sql
+```
 #### Analysis
 
 ##### Retrieve all appointments with their respective patient details (first name, last name).
