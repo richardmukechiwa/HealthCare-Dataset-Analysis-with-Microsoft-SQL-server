@@ -42,7 +42,7 @@ ALTER     COLUMN  ExpiryDate  Date; -- Changing datatype
 #### Analysis
 
 ##### Retrieve all appointments with their respective patient details (first name, last name).
-```
+```sql
 SELECT        a.AppointmentID,
               a.AppointmentDateTime,
               a.PatientID,
@@ -55,7 +55,7 @@ ON            a.PatientID = p.PatientID;
 ![Hea 1](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/fa9cb545-2d41-49a9-982a-6e2c92cb8251)
 
 ###### Find the total number of appointments made.
-```
+```sql
 SELECT        COUNT(DISTINCT AppointmentID) AS NumberofAppointments
 FROM          dbo.Appointments;
  ```
@@ -63,7 +63,7 @@ FROM          dbo.Appointments;
  ![Hea 2](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/8bcf89a7-3622-4eeb-aa9d-6cb67426b647) 
  
 ##### List all doctors along with their specializations.
-```
+```sql
 SELECT        DoctorID,
               CONCAT(FirstName,' ',LastName) AS DocName,
               Specialisation
@@ -73,7 +73,7 @@ FROM          dbo.Doctors;
 ![Hea 3](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/fa4e71a6-694f-4738-ba3e-03760b01661c)
 
 ##### Retrieve patients who are male and were born before 1980.
-```
+```sql
 SELECT        CONCAT(FirstName,' ',LastName) AS PatientName,
               Gender,
               DateofBirth
@@ -86,7 +86,7 @@ ORDER  BY     DateofBirth ASC;
 ![Hea 4](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/451e6a10-ceab-4ac6-b95f-2e1be9b875e7)
 
 ##### Get the count of appointments for each doctor.
-```
+```sql
 SELECT        d.DoctorID,
               CONCAT(d.FirstName,' ',d.LastName) AS DocName,
 n             COUNT(a.AppointmentID) AS AppointmentCount
@@ -101,7 +101,7 @@ GROUP BY      d.DoctorID,
 ![Hea 5](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/bb6da9e6-494d-4610-9a6f-fcebe35d6276)
               
 ##### Find doctors who prescribed medications and their respective medication count.
-```
+```sql
 SELECT        PrescribingDoctorID,
               CONCAT(FirstName,' ',LastName) AS DocName,
 			  COUNT(DISTINCT MedicationID) AS MediCount
@@ -117,7 +117,7 @@ ORDER BY      PrescribingDoctorID ASC;
  ![Hea 6](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/03f03323-d38b-49d1-948c-f701dc0c32f8) 
  
 ##### List appointments scheduled for pediatricians.
-```
+```sql
 SELECT        a.AppointmentID,
               a.AppointmentDateTime,
               a.DoctorID,
@@ -132,7 +132,7 @@ WHERE         Specialisation LIKE 'pediatric%';
 ![Hea 7](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/4bff8ab9-c52a-4ff2-87f6-0efec38bd7e5)
 
 ##### Identify patients who have appointments for child-related issues and the medications they are prescribed.
-```
+```sql
 SELECT        p.PatientID,
               CONCAT(p.FirstName,' ',p.LastName) AS PatientName,
               a.Purpose,
@@ -148,7 +148,7 @@ WHERE         Purpose LIKE '%child%';
 ![Hea 8](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/e88c30a6-b924-4236-8705-d7f3e2c6382e)
 
 ##### Find doctors who prescribed medications that are expiring within the next 30 days.
-```
+```sql
 SELECT         d.DoctorID,
                CONCAT(d.FirstName,' ',d.LastName) AS DocName,
                m.MedicationName,
@@ -163,7 +163,7 @@ AND            DATEADD(Day, 30, GETDATE());
 ![Hea 9](https://github.com/richardmukechiwa/HealthCare-Dataset-Analysis-with-Microsoft-SQL-server/assets/131812176/e355ee48-694a-4a6c-9ef5-8e627f075c49)
 
 ##### Retrieve patients who haven't had any appointments.
-```
+```sql
 SELECT         p.PatientID,
                CONCAT(p.FirstName,' ',p.LastName) AS PatientName,
                a.AppointmentID
