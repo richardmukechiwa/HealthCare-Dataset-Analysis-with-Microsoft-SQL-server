@@ -18,27 +18,27 @@
 
 ### The Project
 #### Data Check and Manipulation
-```
+```sql
    SELECT   *   FROM   dbo.Appointments;
 ```
-```
+```sql
    SELECT   *   FROM   dbo.Doctors;
 ```
-```
+```sql
    SELECT   *   FROM   dbo.Medications;
 ```
-```
+```sql
   SELECT   *   FROM   dbo.Patients;
 ```
 
-```
+```sql
 ALTER     TABLE      dbo.Medications
 ALTER     COLUMN  PrescriptionDate  Date; --Changing datatype
 ```
-```
+```sql
 ALTER     TABLE      dbo.Medications
 ALTER     COLUMN  ExpiryDate  Date; -- Changing datatype
-```
+```sql
 #### Analysis
 
 ##### Retrieve all appointments with their respective patient details (first name, last name).
